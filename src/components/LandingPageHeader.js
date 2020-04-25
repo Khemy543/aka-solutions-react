@@ -42,7 +42,7 @@ function LandingPageHeader() {
         
           <span className="white"  style={{
             fontSize: "3.6em",
-            color:"rgba(0, 55, 255, 0.82)",
+            color:"rgba(0, 90, 255, 0.82)",
             fontWeight:"bold"
             }}>AKA </span>&nbsp;<span className="red"  style={{
                 fontSize: "3.6em",

@@ -75,21 +75,35 @@ function Footer() {
         
         <h6 className="text-uppercase font-weight-bold">Follow us on</h6>
         <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"  style={{width: "60px"}}/>
-        <a href="#!" style={{color:"inherit"}}>
+
+
+        <a href="https://twitter.com/AkaProductive" target="_blank" rel="noopener noreferrer" style={{color:"inherit"}}>
         <p>
-          <i className="fa fa-twitter mr-3" ></i> Twitter</p></a>
+          <i className="fa fa-twitter mr-3" ></i>
+           Twitter</p>
+        </a>
+
 
           <a href="#!" style={{color:"inherit"}}>
-        <p>
-       
-          <i className="fa fa-facebook mr-3"></i> Facebook</p></a>
-          <a href="#!" style={{color:"inherit"}}>
-        <p>
-          <i className="fa fa-instagram mr-3"></i> Instagram</p></a>
-          <a href="#!" style={{color:"inherit"}}>
-        <p>
-          <i className="fa fa-linkedin mr-3"></i> Linkedin</p></a>
+          <p>
+          <i className="fa fa-facebook mr-3"></i>
+           Facebook</p>
+           </a>
 
+
+
+          <a href="https://www.instagram.com/_akaproductivesolutionsltd/" target="_blank" rel="noopener noreferrer" style={{color:"inherit"}}>
+          <p>
+          <i className="fa fa-instagram mr-3"></i>
+           Instagram</p>
+           </a>
+
+           
+          <a href="#!" style={{color:"inherit"}}> 
+          <p>
+          <i className="fa fa-linkedin mr-3"></i>
+           Linkedin</p>
+           </a>
       </div>
        
 
@@ -101,7 +115,7 @@ function Footer() {
    
    
   <div className="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/" style={{color:"inherit"}}> AKA Productive Solutions Limited</a>
+    <a href="#!" style={{color:"inherit"}}> AKA Productive Solutions Limited</a>
   </div>
    
 </footer>

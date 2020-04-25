@@ -1,9 +1,10 @@
 
-import React from "react";
+import React,{ useState} from "react";
 import { Link } from "react-scroll";
 import { Helmet } from "react-helmet";
 
-
+//axios
+import axios from 'axios';
 
 // reactstrap components
 import {
@@ -19,7 +20,9 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col,
+  Modal, 
+  Spinner
 } from "reactstrap";
 
 // core components
@@ -33,6 +36,17 @@ import 'font-awesome/css/font-awesome.min.css';
 
 
 
+axios.defaults.withCredentials = true;
+//axios.defaults.headers.common['Auth-Token'] = 'foo bar';
+const config = {
+  withCredentials: true, 
+  headers : {
+  "Access-Control-Allow-Origin":"*",
+  "Content-Type": "application/json",
+  "Access-Control-Request-Headers":"authorization",
+  },
+
+};
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -42,6 +56,37 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
   });
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [alertpop, setAlertpop] = useState(false);
+  
+  const [modal, setModal] = useState(false);
+  
+    const toggle = () => setModal(!modal);
+
+
+const handleSubmit = (e) =>{
+  e.preventDefault();
+  console.log(e);
+   
+axios.post('http://127.0.0.1:5000/api/v1/post-message', {
+  config, name, email, message
+}).then(res => {
+  console.log(res);
+  if (res.data.status === 200){
+    setAlertpop(true);
+  }
+  else{
+
+  }
+   
+}) 
+
+}
+
+
   return (
     <div>
       <Helmet>
@@ -329,6 +374,15 @@ candidate to the right placement.
         <div className="section landing-section" id="contact-us">
           <Container>
           <h2 className="text-center">Contact Us</h2>
+          {/* {!alertpop?
+              <div>
+              
+              </div>
+              :
+              <Alert color="info" isOpen={visible} toggle={onDismiss}>
+              I am an alert and I can be dismissed!
+              </Alert>
+              } */}
             <Row>
             
             <Col className="ml-auto mr-auto" md="4">
@@ -340,8 +394,9 @@ candidate to the right placement.
                   </div>
             </Col>
               <Col className="ml-auto mr-auto" md="6">
+              
                 
-                <Form className="contact-form">
+                <Form className="contact-form" onSubmit={handleSubmit}>
                   <Row>
                     <Col md="6">
                       <label>Name</label>
@@ -351,7 +406,10 @@ candidate to the right placement.
                             <i className="nc-icon nc-single-02" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Name" type="text" />
+                        <Input placeholder="Name" type="text" name="name" value={name}
+                onChange={e => setName(e.target.value)}
+                require
+                />
                       </InputGroup>
                     </Col>
                     <Col md="6">
@@ -362,7 +420,10 @@ candidate to the right placement.
                             <i className="nc-icon nc-email-85" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="text" />
+                        <Input placeholder="Email" type="text" name="email" value={email}
+                onChange={e => setEmail(e.target.value)}
+                require
+                />
                       </InputGroup>
                     </Col>
                   </Row>
@@ -371,12 +432,32 @@ candidate to the right placement.
                     placeholder="Tell us your thoughts and feelings..."
                     type="textarea"
                     rows="4"
+                    name="message"
+                    value={message}
+                onChange={e => setMessage(e.target.value)}
+                require
                   />
                   <Row>
                     <Col className="ml-auto mr-auto" md="4">
-                      <Button className="btn-fill" color="primary" size="lg">
+                      <Button className="btn-fill" color="primary" size="lg" type="submit" onClick={toggle} disabled={!email||!message||!name}>
                         Send
                       </Button>
+
+                      <Modal isOpen={modal} toggle={toggle} style={{
+                        width:"200px",
+                        paddingTop:"15%"
+                      }}>
+                      
+                      <div style={{alignContent:"center"}}>
+                      {!alertpop?
+                        <Spinner color="primary" style={{marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}/>
+                        :
+                        <i className="fa fa-check-circle" style={{fontSize:"56px",color:"rgba(98, 254, 1, 0.9)",marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}></i>
+                      }
+                      
+                      </div>
+                      </Modal>
+
                     </Col>
                   </Row>
                 </Form>
@@ -384,7 +465,7 @@ candidate to the right placement.
             </Row>
           </Container>
         </div>
-        <div style={{height:"300px"}}> 
+        <div className="section text-center" style={{height:"350px", marginTop:"-70px"}}> 
            
            <MapContainer />
              
