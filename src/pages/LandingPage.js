@@ -31,8 +31,8 @@ import LandingPageHeader from "../components/LandingPageHeader.js";
 import Footer from "../components/Footer.js";
 //googlemaps
 import  MapContainer  from "../components/GoogleMaps.js";
-
 import 'font-awesome/css/font-awesome.min.css';
+import "../assets/css/Carousel.css";
 
 
 
@@ -71,12 +71,15 @@ const handleSubmit = (e) =>{
   e.preventDefault();
   console.log(e);
    
-axios.post('http://127.0.0.1:5000/api/v1/post-message', {
+axios.post('https://salty-anchorage-79079.herokuapp.com/api/v1/post-message', {
   config, name, email, message
 }).then(res => {
   console.log(res);
   if (res.data.status === 200){
     setAlertpop(true);
+    setEmail('');
+    setName('');
+    setMessage('');
   }
   else{
 
@@ -443,16 +446,17 @@ candidate to the right placement.
                         Send
                       </Button>
 
-                      <Modal isOpen={modal} toggle={toggle} style={{
-                        width:"200px",
-                        paddingTop:"15%"
+                      <Modal id="modal" isOpen={modal} toggle={toggle} style={{
+                        width:"200px" ,
+                        marginTop:"10%",
+                         
                       }}>
                       
                       <div style={{alignContent:"center"}}>
                       {!alertpop?
                         <Spinner color="primary" style={{marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}/>
                         :
-                        <i className="fa fa-check-circle" style={{fontSize:"56px",color:"rgba(98, 254, 1, 0.9)",marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}></i>
+                        <i className="fa fa-check-circle" style={{fontSize:"56px",color:"rgba(1, 137, 254, 0.9)",marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}></i>
                       }
                       
                       </div>

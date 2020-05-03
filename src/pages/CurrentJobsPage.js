@@ -25,7 +25,8 @@ function CurrentJobsPage() {
        <div className="section text-center"
        style={{
           background: "linear-gradient(rgba(0, 161, 255, 0.58),rgba(0, 161, 255, 0.58)), url(" + require("../assets/img/image8.jpg") + ") no-repeat fixed",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          height:"289px"
           
         }}
         data-parallax={true}

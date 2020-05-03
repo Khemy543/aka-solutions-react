@@ -51,3 +51,9 @@
     }
 
 }
+@media(max-width:801px){
+    #modal{
+        margin-top: 100%;
+        margin-left: 23%;
+    }
+}
