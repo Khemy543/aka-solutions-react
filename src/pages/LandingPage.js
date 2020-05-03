@@ -6,6 +6,10 @@ import { Helmet } from "react-helmet";
 //axios
 import axios from 'axios';
 
+//Cookies
+import { useCookies } from 'react-cookie';
+import CookieConsent from "react-cookie-consent";
+
 // reactstrap components
 import {
   Button,
@@ -57,10 +61,12 @@ function LandingPage() {
     };
   });
 
+  const [cookies, setCookie] = useCookies(['name']);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [alertpop, setAlertpop] = useState(false);
+
   
   const [modal, setModal] = useState(false);
   
@@ -98,6 +104,22 @@ axios.post('https://salty-anchorage-79079.herokuapp.com/api/v1/post-message', {
       <Navbar />
       <LandingPageHeader />
       <div className="main">
+      <CookieConsent
+        location="bottom"
+        buttonText="I understand"
+        cookieName="myAwesomeCookieName1"
+        style={{ background: "rgb(38, 45, 61)" }}
+        buttonStyle={{ backgroundColor:"rgb(38, 45, 61)", color: "white", fontSize: "13px" , borderRadius:"4px", border:"1px solid white"}}
+        expires={150000}
+    >
+    This website uses cookies to ensure you get the best experience on our website.{" "}
+    <div>
+    <a href ="#!" style={{ fontSize: "12px" }}>
+    Learn more
+    </a>
+    </div>
+    
+    </CookieConsent>
         <div className="section text-center" id="services">
           <Container>
             <Row>
@@ -410,7 +432,12 @@ candidate to the right placement.
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input placeholder="Name" type="text" name="name" value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={
+                  e => {
+                  setName(e.target.value)
+                  setCookie('name', e.target.value, { path: '/' });
+
+                  } }
                 require
                 />
                       </InputGroup>
@@ -456,7 +483,10 @@ candidate to the right placement.
                       {!alertpop?
                         <Spinner color="primary" style={{marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}/>
                         :
+                        <div>
                         <i className="fa fa-check-circle" style={{fontSize:"56px",color:"rgba(1, 137, 254, 0.9)",marginTop:"50px", marginRight:"50px", marginLeft:"80px", marginBottom:"50px"}}></i>
+                        {console.log(cookies.name) }
+                        </div>
                       }
                       
                       </div>
