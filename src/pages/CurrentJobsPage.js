@@ -24,17 +24,16 @@ function CurrentJobsPage() {
     <div className="main" style={{marginTop:"100px"}}>
        <div className="section text-center"
        style={{
-          background: "linear-gradient(rgba(0, 161, 255, 0.58),rgba(0, 161, 255, 0.58)), url(" + require("../assets/img/image8.jpg") + ") no-repeat fixed",
-          backgroundSize: "cover",
+          
           height:"289px"
           
         }}
-        data-parallax={true}
+        
        >
-       <div className="filter" />
+       
        <Container>
-          <div className="motto text-center">
-            <h1 style={{color:"white"}}>COMING SOON</h1>
+          <div className="motto">
+            <h1>No Jobs available now!!</h1>
             </div>
             </Container>
          </div>

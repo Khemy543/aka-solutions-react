@@ -79,29 +79,29 @@ function Footer() {
 
         <a href="https://twitter.com/AkaProductive" target="_blank" rel="noopener noreferrer" style={{color:"inherit"}}>
         <p>
-          <i className="fa fa-twitter mr-3" ></i>
+          <i className="fa fa-twitter mr-3" style={{color:"#55acee"}}></i>
            Twitter</p>
         </a>
 
 
           <a href="#!" style={{color:"inherit"}}>
           <p>
-          <i className="fa fa-facebook mr-3"></i>
-           Facebook</p>
+          <i className="fa fa-google-plus mr-3" style={{color:"#dd4b39"}}></i>
+           Google</p>
            </a>
 
 
 
           <a href="https://www.instagram.com/_akaproductivesolutionsltd/" target="_blank" rel="noopener noreferrer" style={{color:"inherit"}}>
           <p>
-          <i className="fa fa-instagram mr-3"></i>
+          <i className="fa fa-instagram mr-3" style={{color:"#3f729b"}}></i>
            Instagram</p>
            </a>
 
            
           <a href="#!" style={{color:"inherit"}}> 
           <p>
-          <i className="fa fa-linkedin mr-3"></i>
+          <i className="fa fa-linkedin mr-3 " style={{color:"#0976b4"}}></i>
            Linkedin</p>
            </a>
       </div>

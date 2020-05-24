@@ -39,7 +39,7 @@ function LandingPageHeader() {
         <div className="filter" />
         <Container>
           <div className="motto text-center">
-        
+          <div data-aos="zoom-in">
           <span className="white"  style={{
             fontSize: "3.6em",
             color:"rgba(0, 90, 255, 0.82)",
@@ -49,6 +49,7 @@ function LandingPageHeader() {
                 color:"#00a1ff",
                 fontWeight:"bold"
             }}>SOLUTIONS</span>
+            </div>
             <h3>
             <Typical
             loop={Infinity}

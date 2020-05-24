@@ -38,7 +38,7 @@ onClose = props => {
         zoom={17}
         style={{
           width:"100%",
-          height:"275px",
+          height:"300px",
           position:"static"
         }}
         initialCenter={{ lat: 51.566727, lng: 0.084008 }}

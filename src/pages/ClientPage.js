@@ -16,7 +16,7 @@ import Slide from "../components/Carousel.js";
 
  
 
-function ServicesPage() {
+function ClientPage() {
     return (
         <div >
           <Helmet>
@@ -229,4 +229,4 @@ function ServicesPage() {
     );
 }
 
-export default ServicesPage;
+export default ClientPage;

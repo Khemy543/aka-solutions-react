@@ -6,6 +6,12 @@ import { Helmet } from "react-helmet";
 //axios
 import axios from 'axios';
 
+//react slick
+import Slider from "react-slick";
+
+//card slide
+import { CardSlide } from 'react-card-slide/dist';
+
 //Cookies
 import { useCookies } from 'react-cookie';
 import CookieConsent from "react-cookie-consent";
@@ -26,7 +32,9 @@ import {
   Row,
   Col,
   Modal, 
-  Spinner
+  Spinner,
+  CardImg, CardText, CardLink, CardSubtitle,
+  UncontrolledTooltip
 } from "reactstrap";
 
 // core components
@@ -60,6 +68,26 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
   });
+
+// react slick settings
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 200,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay:true,
+    responsive:[
+      {
+        breakpoint:450,
+        settings:{
+            centerMode:true,
+            slidesToShow:1,
+            centerPadding:'40px'
+        }
+      }
+    ]
+  };
 
   const [cookies, setCookie] = useCookies(['name']);
   const [name, setName] = useState('');
@@ -124,106 +152,80 @@ axios.post('https://salty-anchorage-79079.herokuapp.com/api/v1/post-message', {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" md="8">
-                <h2 className="title">Our Services</h2>
+                <h2 className="title" color="info">Our Services</h2>
                 <h5 className="description">
                 we provide highly qualified and skilled trades personnel for the
-construction industry which include both temporary and permanent placements. We also offer
-skilled and highly qualified staff with competitive rates with a personalised customer
-service. Some of our clients include
+construction industry which include both 
 
                 </h5>
-                <Button
-                  className="btn-round"
-                  color="info"
-                  href="/services"
-                   
-                >
-                  See Details
-                </Button>
+                
                
               </Col>
             </Row>
             <br />
             <br />
             <Row>
-              <Col md="3">
-                <div className="info">
-                  <div className="icon icon-info">
-                    <i className="nc-icon nc-album-2" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Lendlease</h4>
-                    <p className="description">
-                      Spend your time generating new ideas. You don't have to
-                      think of implementing.
+            <Col md="4">
+                  <div  data-aos="slide-right" data-aos-delay="400">
+                    <img alt="#" src={require("../assets/img/services/service7.jpg")}
+                     
+                      className="zoom"
+                    />
+                    <div className="description" style={{marginTop:"-30px"}}>
+                    <h4 style={{color:"black", fontWeight:"500"}}>Website Design</h4>
+                    <p className="sub-title" style={{color:"rgba(0, 0, 0, 0.62)", fontWeight:"500"}}>
+                      Strategically planned and innovative website designs to help your company ot business
+                      move to the next level
                     </p>
                     
                   </div>
-                </div>
+
+                    </div>
               </Col>
-              <Col md="3">
-                <div className="info">
-                  <div className="icon icon-info">
-                    <i className="nc-icon nc-bulb-63" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Cilantro</h4>
-                    <p>
+             
+              <Col md="4">
+              <div data-aos="slide-right" data-aos-delay="200">
+                    <img alt="#" src={require("../assets/img/services/service5.png")}
+                    
+                       className="zoom"
+                    />
+                    <div className="description" style={{marginTop:"-30px"}}>
+                    <h4 style={{color:"black", fontWeight:"500"}}>Website Hosting</h4>
+                    <p className="sub-title" style={{color:"rgba(0, 0, 0, 0.62)", fontWeight:"500"}}> 
                       Larger, yet dramatically thinner. More powerful, but
                       remarkably power efficient.
                     </p>
                     
                   </div>
-                </div>
+                    </div>
               </Col>
-              <Col md="3">
-                <div className="info">
-                  <div className="icon icon-info">
-                    <i className="nc-icon nc-chart-bar-32" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Ballymore</h4>
-                    <p>
-                      Choose from a veriety of many colors resembling sugar
-                      paper pastels.
+              <Col md="4">
+              <div data-aos="slide-right">
+                    <img alt="#" src={require("../assets/img/services/service5.png")}
+                   
+                      className="zoom"
+                    />
+                    <div className="description" style={{marginTop:"-30px"}}>
+                    <h4 style={{color:"black", fontWeight:"500"}}>Website Marketing</h4>
+                    <p className="sub-title" style={{color:"rgba(0, 0, 0, 0.62)", fontWeight:"500"}}>
+                      Digital marketing of web services on digital and media platforms to promote products and services
                     </p>
                     
                   </div>
-                </div>
-
+                    </div>
               </Col>
-              <Col md="3">
-                <div className="info">
-                  <div className="icon icon-info">
-                    <i className="nc-icon nc-sun-fog-29" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Service plan</h4>
-                    <p>
-                      Find unique and handmade delightful designs related items
-                      directly from our sellers.
-                    </p>
-                    <a href="/services" style={{textDecoration:"none", color:"inherit",fontWeight:"600"}}>
-                    <Button className="btn-link" color="info">
-                    
-                      See more
-                      
-                    </Button>
-                    </a>
-                  </div>
-                </div>
-              </Col>
+              
             </Row>
           </Container>
         </div>
-        <div className="section section-dark text-center" id="about-us">
+        <div className="section section-dark" id="about-us">
           <Container>
           <Row>
-              <Col className="ml-auto mr-auto" md="8">
+              <Col className="ml-auto mr-auto" md="4" data-aos="fade-right" data-aos-delay="100">
                 <h2 className="title">Let's talk About us</h2>
                 
                 <h5 className="description">
-                Established on 10th July 2013<br/>
+                Established on 10th July 2013<br/> <br/>
                 Construction and
 Recruitment company based in Ilford
 greater london In the Essex area. Our target location includes ESSEX and London as a
@@ -232,170 +234,160 @@ but our current client is JADEB other clients includes lendlease,
 bellway homes and ballymore builders.
                 </h5>
               </Col>
+              <Col md="8" data-aos="zoom-in" data-aos-delay="100">
+                <img src={require("../assets/img/image15.jpg")} alt="#" style={{width:"100%", height:"auto", marginTop:"10px"}}/>
+              </Col>
             </Row>
             <br />
             <br />
-            <Row>
-              <Col md="4">
-                <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("../assets/img/faces/worker1.jpg")}
-                      />
-                    </a>
-                  </div>
-                  <CardBody>
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <div className="author">
-                        <CardTitle tag="h4">Joseph Korsa-Acquah</CardTitle>
-                        <h6 className="card-category">Founder</h6>
-                      </div>
-                    </a>
-                    <p className="card-description text-center">
-                    A visioned man with 20 years industrial experience. He is motivated to provide the right people to the right jobs and keep them
-working. Satisfaction of placing the right
-candidate to the right placement.
-
-
-                    </p>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Col>
-              <Col md="4">
-                <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("../assets/img/faces/joe-gardner-2.jpg")}
-                      />
-                    </a>
-                  </div>
-                  <CardBody>
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <div className="author">
-                        <CardTitle tag="h4">Sophie West</CardTitle>
-                        <h6 className="card-category">Designer</h6>
-                      </div>
-                    </a>
-                    <p className="card-description text-center">
-                      A group becomes a team when each member is sure enough of
-                      himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes an
-                      orchestra to play it.
-                    </p>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Col>
-              <Col md="4">
-                <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("../assets/img/faces/erik-lucatero-2.jpg")}
-                      />
-                    </a>
-                  </div>
-                  <CardBody>
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      <div className="author">
-                        <CardTitle tag="h4">Robert Orben</CardTitle>
-                        <h6 className="card-category">Developer</h6>
-                      </div>
-                    </a>
-                    <p className="card-description text-center">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
-                    </p>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Col>
-            </Row>
+           
           </Container>
         </div>
+
+        <div className="section landing-section" id="clients">
+          <Container>
+          <h2 className="text-center">Our Latest Clients</h2>
+            <Row>
+            
+              <Col md="12" style={{overflowX:"hidden"}}>
+          <Slider {...settings}>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+          
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+        <CardTitle>Card title 1</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          
+        </CardBody>
+      </Card>
+        </div>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+          
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+        <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          
+        </CardBody>
+      </Card>
+        </div>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+          <CardLink href="#">Card Link</CardLink>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+         
+        </CardBody>
+      </Card>
+        </div>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+          
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+        <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          
+        </CardBody>
+      </Card>
+        </div>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+          
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+        <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+         
+        </CardBody>
+      </Card>
+        </div>
+        <div>
+        <Card style={{maxWidth:"335px"}}>
+        <CardBody>
+          
+        </CardBody>
+        <img width="100%" src={require("../assets/img/image13.jpg")} alt="Card image cap" />
+        <CardBody>
+        <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+         
+        </CardBody>
+      </Card>
+        </div>
+      </Slider>
+      </Col>
+      </Row>
+    {/*   <Button
+      color="info"
+      href="/client-page"
+      >
+       view more clients
+        </Button> */}
+      </Container>
+          </div>
+
+
+          <div className="section text-center"
+        
+        style={{
+          background: "linear-gradient(rgba(0, 161, 255, 0.58),rgba(0, 161, 255, 0.58)), url(" + require("../assets/img/image8.jpg") + ") no-repeat fixed",
+          backgroundSize: "cover"
+          
+        }}
+        data-parallax={true}        
+        >
+        <div className="filter" />
+        <Container>
+          <div className="motto text-center">
+            <h1 style={{color:"white"}}>Need Help Finding trade Professionals?</h1>
+            <h3 style={{color:"white"}}>We can help you!</h3>
+            <p style={{color:"white"}}>Personalised customer service. We provide highly qualified and skilled trades personnel</p>
+            </div>
+            <br />
+            <Link
+            activeClass="active"
+                to="contact-us"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration= {500}
+                style={{fontWeight:"600"}}
+            >
+            <Button
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              className="btn-round mr-1"
+              color="neutral"
+              target="_blank"
+              outline
+            >
+              <i className="fa fa-play" />
+              REQUEST A CALLBACK
+            </Button>
+            </Link>
+            </Container>
+
+          </div>
+
+
         <div className="section landing-section" id="contact-us">
           <Container>
           <h2 className="text-center">Contact Us</h2>
@@ -410,15 +402,15 @@ candidate to the right placement.
               } */}
             <Row>
             
-            <Col className="ml-auto mr-auto" md="4">
+            <Col className="ml-auto mr-auto" md="4" data-aos="fade-right" data-aos-delay="100">
             <div>
             <h3>Contact info</h3>
-                      <p class="description"><i className="fa fa-home" style={{marginRight:"15px"}}/>Office # 38, Suite 54 Elizebth Street, Victoria State Newyork, USA 33026</p>
-                      <p class="description"><i className="fa fa-phone" style={{marginRight:"15px"}}/>07956994221</p>   
+                      <p class="description"><i className="fa fa-home" style={{marginRight:"15px"}}/>Office # 38, Suite 54 Elizebth Street, Victoria State Newyork, USA 33526</p>
+                      <p class="description"><i className="fa fa-phone" style={{marginRight:"15px"}}/>+233-552480391</p>   
                       <p class="description"><i className="fa fa-envelope" style={{marginRight:"15px"}}/>joseph@akaproductivesolutionsltd.co.uk</p>             
                   </div>
             </Col>
-              <Col className="ml-auto mr-auto" md="6">
+              <Col className="ml-auto mr-auto" md="6" data-aos="zoom-in" data-aos-delay="100">
               
                 
                 <Form className="contact-form" onSubmit={handleSubmit}>
@@ -504,46 +496,78 @@ candidate to the right placement.
            <MapContainer />
              
         </div>
-        <div className="section text-center"
         
-        style={{
-          background: "linear-gradient(rgba(0, 161, 255, 0.58),rgba(0, 161, 255, 0.58)), url(" + require("../assets/img/image8.jpg") + ") no-repeat fixed",
-          backgroundSize: "cover"
+        <div className="section">
+        <Container className="text-center">
+          <Row>
+            <Col className="ml-auto mr-auto text-center" md="8" data-aos="fade-right">
+              <h2 className="title">Do you like Our Servies?</h2>
+              <p className="description">
+                Cause if you do, it can be yours for Free. Hit the button below
+                and download it. Start a new project or give an old Bootstrap 4
+                project a new look.
+              </p>
+            </Col>
+            
+          </Row>
           
-        }}
-        data-parallax={true}        
-        >
-        <div className="filter" />
-        <Container>
-          <div className="motto text-center">
-            <h1 style={{color:"white"}}>Need Help Finding trade Professionals?</h1>
-            <h3 style={{color:"white"}}>We can help you!</h3>
-            <p style={{color:"white"}}>Personalised customer service. We provide highly qualified and skilled trades personnel</p>
-            </div>
-            <br />
-            <Link
-            activeClass="active"
-                to="contact-us"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration= {500}
-                style={{fontWeight:"600"}}
-            >
-            <Button
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              className="btn-round mr-1"
-              color="neutral"
-              target="_blank"
-              outline
-            >
-              <i className="fa fa-play" />
-              REQUEST A CALLBACK
-            </Button>
-            </Link>
-            </Container>
-
-          </div>
+          <Row className="justify-content-md-center sharing-area text-center">
+            <Col className="text-center" lg="8" md="12">
+              <h3>Thank you for supporting us!</h3>
+            </Col>
+            <Col className="text-center" lg="8" md="12" data-aos="fade-right">
+              <Button
+                className="twitter-sharrre btn-round"
+                color="twitter-bg"
+                href="#pablo"
+                id="tooltip3373767"
+                onClick={e => e.preventDefault()}
+              >
+                <i className="fa fa-twitter" /> Twitter
+              </Button>
+              <UncontrolledTooltip delay={0} target="tooltip3373767">
+                Tweet!
+              </UncontrolledTooltip>
+              <Button
+                className="linkedin-sharrre btn-round  ml-2"
+                color="google-bg"
+                href="#pablo"
+                id="tooltip840791273"
+                onClick={e => e.preventDefault()}
+              >
+                <i className="fa fa-google-plus" /> Google
+              </Button>
+              <UncontrolledTooltip delay={0} target="tooltip840791273">
+                Share!
+              </UncontrolledTooltip>
+              <Button
+                className="facebook-sharrre btn-round ml-2"
+                color="facebook-bg"
+                href="#pablo"
+                id="tooltip68961360"
+                onClick={e => e.preventDefault()}
+              >
+                <i className="fa fa-facebook-square" /> Facebook
+              </Button>
+              <UncontrolledTooltip delay={0} target="tooltip68961360">
+                Share!
+              </UncontrolledTooltip>
+              <Button
+                className="sharrre btn-round ml-2"
+                color="github-bg"
+                href="https://github.com/creativetimofficial/paper-kit-react?ref=creativetim"
+                target="_blank"
+                id="tooltip864353654"
+              >
+                <i className="fa fa-github" /> Star
+              </Button>
+              <UncontrolledTooltip delay={0} target="tooltip864353654">
+                Star on Github
+              </UncontrolledTooltip>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
       </div>
        <Footer/>

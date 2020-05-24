@@ -53,6 +53,7 @@ function NavBar() {
       className={classnames("fixed-top", navbarColor)}
       color-on-scroll="300"
       expand="lg"
+      
     >
       <Container>
         <div className="navbar-translate">
@@ -64,8 +65,8 @@ function NavBar() {
             src={require("../assets/img/logo.png")}
             alt=""
             style={{
-                width:"110px", 
-                height:"auto",
+                width:"auto", 
+                height:"30px",
                 
             }}
             />
@@ -138,6 +139,21 @@ function NavBar() {
               <NavLink  href="#">
               <Link
                 activeClass="active"
+                to="clients"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration= {500}
+                style={{fontWeight:"600"}}
+>
+                Clients
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#">
+              <Link
+                activeClass="active"
                 to="contact-us"
                 spy={true}
                 smooth={true}
@@ -145,21 +161,15 @@ function NavBar() {
                 duration= {500}
                 style={{fontWeight:"600"}}
 >
+              
                 Contact Us
-                </Link>
+               </Link> 
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink  href="/currentjobs">
               
-                Current Jobs
-                
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink  href="/shop">
-              
-                Shop
+                Jobs
                 
               </NavLink>
             </NavItem>
